@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Color Me Orange - Contact Us</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+        <script type = "text/javascript">
+
+            function validate_field(field) {
+                if (!field || field == "") {
+                    return false;
+                }
+                return true;
+            }
+
+            function validate_email(field) {
+                if (!field || field == "") {
+                    return false;
+                }
+
+                var at_pos = field.indexOf("@");
+                var dot_pos = field.lastIndexOf(".");
+                if (at_pos < 1 || dot_pos < at_pos + 2 || dot_pos + 2 >= field.length) {
+                    return false;
+                }
+
+                return true;
+            }
+
+            function validate_form() {
+                var name = document.forms["contact_form"]["name"].value.trim();
+                var email = document.forms["contact_form"]["_replyto"].value.trim();
+                var message = document.forms["contact_form"]["message"].value;
+
+/*                
+                var alert = "";
+                if (validate_field(name) == false) {
+                    alert = alert.concat("The following field(s) is invalid:- Name");
+                    alert("DEBUG: name field invalid");
+                }*/
+/*                if (!validate_email(email)) {
+                    alert = alert.concat("- Email\n\t");
+                    alert("DEBUG: email field invalid");
+                }
+                if (!validate_field(message)) {
+                    alert = alert.concat("- Questions or comments\n\t");
+                    alert("DEBUG: questions/comments field invalid");
+                }*/
+
+/*                if (alert.length > 0) {
+                    alert("DEBUG: alert msg is present");
+                    alert(alert);
+                    return false;
+                }*/
+
+                if (!validate_field(name) || !validate_email(email) || !validate_field(message)) {
+                    alert("Error: all fields must be filled out.\nEmail addresses must be of the form \'someone@example.com\'");
+                    return false;
+                }
+
+                return true;
+            }
+
+        </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="without-description">
+        <h1>Contact Us</h1>
+        <p></p>
+
+        <ul>
+          <li><a href="index.html"><strong>Home</strong></a></li>
+          <li><a href="runinfo.html"><strong>Run Info</strong></a></li>
+          <li><a href="register.html"><strong>Register</strong></a></li>
+          <li><a href="pay.html"><strong>Pay</strong></a></li>
+          <!--<li><a href="contact.html"><strong>Contact Us</strong></a></li>-->
+        <!--
+          <li><a href="https://github.com/brianjchow/colormeorange/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/brianjchow/colormeorange/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/brianjchow/colormeorange">View On <strong>GitHub</strong></a></li>
+        -->
+        </ul>
+        
+      </header>
+      <section>
+
+        <!--
+            Replace your@email.com with your email on the form below.
+            Then when you submit the form, you'll get the data via email
+            Read more at www.formspree.io
+        -->
+      <p>
+        <strong>
+        Want to make a donation? </br>
+        Have any general questions or concerns? </br>
+        Having problems with paying or the site? </br>
+        Please contact us using the form below and we will get back to you as soon as possible. Thanks!
+        </strong>
+      </p>
+
+        <small><strong>*Required</strong></small>
+        </br>
+
+        <form name = "contact_form" onsubmit="return validate_form()" method="POST" action="http://forms.brace.io/brianj.chow@yahoo.com"> 
+<!--         "http://forms.brace.io/colormeorange.ut@gmail.com" -->
+        
+            <div class="form-group">
+                <strong><label for="exampleInputName">Name*</label></strong>
+                </br>
+                <input name="name" type="name" class="form-control" id="exampleInputName" placeholder="FirstName LastName">
+                </br></br>
+            </div>
+        
+            <div class="form-group">
+                <strong><label for="exampleInputEmail1">Email*</label></strong>
+                </br>
+                <input name="_replyto" type="email" class="form-control" id="exampleInputEmail1" placeholder="Ex. someone@example.com">
+                </br></br>
+            </div>
+        
+            <div class="form-group">
+                <strong><label for="exampleTextArea">Questions or comments*</label></strong>
+                </br>
+                <textarea name="message" class="form-control" rows="7" cols="40"></textarea>    
+                </br>
+            </div>
+            
+            <small><strong>We will never contact you with unsolicited goods or services.</strong></small>
+
+            </br>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+      </section>
+    </div>
+    <footer>
+    
+    <!--
+      <p>Project maintained by <a href="https://github.com/brianjchow">brianjchow</a></p>
+    -->
+      
+      <p>
+        Hosted on GitHub Pages &mdash;
+        Theme by <a href="https://github.com/orderedlist">orderedlist</a>
+      </p>
+      
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
+
+<!-- STOCK FORM
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Default Website on Brace</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+</head>
+
+<body style="margin: 30px;">
+  
+    <h2>Example form for <a href="http://forms.brace.io" target="_blank">Brace Forms</a>, using <a href="http://brace.io" target="_blank">Brace.io</a></h2>
+  <p class="alert alert-info">Before submitting, open the code editor by clicking the <code>&lt;/&gt;</code> button and update the form's <code>action</code> attribute to contain your email.</p>
+
+    <hr />
+
+    <form method="POST" action="http://forms.brace.io/your@email.com">
+    
+        <div class="form-group">
+            <label for="exampleInputName">Name</label>
+            <input name="name" type="name" class="form-control" id="exampleInputName" placeholder="Enter name">
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input name="_replyto" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleTextArea">Some text</label>
+            <textarea name="message" class="form-control" rows="3"></textarea>    
+        </div>
+      
+        <div class="form-group">
+            <label>Choose one or more</label><br />
+            
+            <label class="checkbox-inline">
+                <input name="choose" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+            </label>
+            <label class="checkbox-inline">
+                <input name="choose" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+            </label>
+            <label class="checkbox-inline">
+                <input name="choose" type="checkbox" id="inlineCheckbox3" value="option3"> 3
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>Pick one</label><br />
+            
+            <label class="radio-inline">
+                <input name="pick" type="radio" id="inlineCheckbox1" value="option1"> 1
+            </label>
+            <label class="radio-inline">
+                <input name="pick" type="radio" id="inlineCheckbox2" value="option2"> 2
+            </label>
+            <label class="radio-inline">
+                <input name="pick" type="radio" id="inlineCheckbox3" value="option3"> 3
+            </label>
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</body>
+</html>
+-->

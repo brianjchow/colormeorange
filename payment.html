@@ -1,0 +1,107 @@
+http://code.tutsplus.com/tutorials/creating-a-paypal-payment-form--net-6
+http://www.evoluted.net/thinktank/web-development/paypal-php-integration
+
+http://www.quora.com/What-are-some-examples-of-very-well-made-GitHub-wiki-pages-for-open-source-projects
+emailmeform.com
+
+GENERAL
+
+ALL BULLET POINTS SHOULD BE IMPLEMENTED IN THE ORDER THEY APPEAR BELOW
+
+Home/About page
+	- what the run is about
+	- the benefiting organization
+	- general summary of run
+	- "Registration for the event ends on [date], so if you'd like to participate in a fun-filled event
+	   that benefits [whoever the org benefits] then register now!" (hyperlink "register now" to Register page)
+	- include link to Contact Us page at bottom
+
+Run Info page
+	- where/when
+	- cost (include link to Register page)
+	- parking and other transportation (buses, etc)
+	- what to bring
+	- what to expect during the run (getting shit thrown all over you, etc)
+	- safety and security
+		- where the cops are
+		- water stations (?)
+		- first aid stations (?)
+		- volunteers: include info on where they are and what they look like
+	- after the run
+
+Register page
+	- "If you have already registered and need to pay, please click here." (hyperlink "here" to Pay page)
+	- "Clicking Submit will redirect you to Paypal in order to pay. Please note that your registration is not
+	   complete until payment is received."
+	- name form
+	- user email address form
+	- submit button/paypal button
+		- in form processing block, create entry in json array first and then proceed
+			- if user already exists
+				- redirect to Register page and print error message
+				- and print "If you have already registered and need to pay, please click here." (hyperlink "here" to Pay page)
+			- else if user or email contains invalid chars, redirect to Register page and print error message
+			- else proceed
+
+		- if paypal payment successfully sent and received: "We will email you once we receive confirmation
+		  of your payment. Thank you!" (see logistics)
+		  	- update paid flag in json array
+		- else "Problems with paying? Please contact us." (hyperlink "contact us" to Contact Us page)
+
+	- "We do not store any financial information. We will never contact you with unsolicited goods or services."
+
+Pay page (HIDDEN)
+	- name form
+	- user email address form
+	- submit button/paypal button
+		- in form processing block, check json array
+			- if user not found
+				- redirect to Register page
+				- print error message
+			- else proceed
+
+		- if paypal payment successfully sent and received: "We will email you once we receive confirmation
+		  of your payment. Thank you!" (see logistics)
+		  	- update paid flag in json array
+		- else "Problems with paying? Please contact us." (hyperlink "contact us" to Contact Us page)
+
+Contact Us page
+
+	- "Would you like to make a donation? Have any general questions or concerns? Having
+	   problems with paying or the site? Please contact us using the form below and we
+	   will get back to you as soon as possible. Thanks!"
+
+	- contact email address form
+	- subject form
+	- text body form
+	- send button
+	- "We will never contact you with unsolicited goods or services."
+
+LOGISTICS
+
+Register page
+	- check if user has already registered (use name and email)
+		- multiple users on the same email acct are allowed, but only allow one registration at a time (also helps in case refund is needed)
+	- need to store name, email, bib/unique number, paid flag (phone number?)
+		- sql database not possible; no server-side code allowed
+		- easiest would be use json array and store local copy in repo (risky, but at least repo is private)
+			- email updated copy of array to master gmail account at end of each day
+			- http://stackoverflow.com/questions/6281963/how-to-build-a-json-array-from-mysql-database
+		- last ditch resort: configure to send email to master gmail account and manually update records
+		- https://github.com/b03tz/FormSave/issues/11
+	- determining if payment successfully received
+		- update json array of users; set paid flag
+		- keep internal copy of total amount raised?
+			- could put donation total up on Home page ("Together we've raised $$$ for [org]" motivational shit)
+		- check if paypal has some mechanism for this
+
+OTHER
+	
+	- SET REGISTRATION CUTOFF DATE
+		- make bibs? needed to prevent people from just jumping in during the event
+	- MAKE PAYPAL ACCOUNT FOR EVENT
+	- PASSWORD PROTECT REGISTER PAGE DURING DEV
+	- send email to all registered a few days before the event with all the info from the Run Info page
+	- start recruiting volunteers and SET CUTOFF DATE
+	- put up links to site on /r/Austin and /r/UTAustin
+	- repost on as many UT-related FB groups as possible
